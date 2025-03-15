@@ -32,7 +32,7 @@
         "server": "local"
       },
       {
-        "rule_set": "category-ads-all",
+        "rule_set": "geosite-category-ads-all",
         "server": "block"
       },
       {
@@ -233,7 +233,6 @@
   ],
   "route": {
     "auto_detect_interface": true,
-    "final": "Proxy",
     "rules": [
       {
         "inbound": [
