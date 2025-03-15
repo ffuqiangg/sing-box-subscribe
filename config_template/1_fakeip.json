@@ -78,7 +78,7 @@
     "strategy": "ipv4_only",
     "disable_cache": false,
     "independent_cache": true
-  }
+  },
   "inbounds": [
     {
       "tag": "tun-in",
