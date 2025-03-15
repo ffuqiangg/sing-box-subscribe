@@ -34,7 +34,7 @@ jobs:
       - name: Buildx
         uses: docker/build-push-action@v6
         with:
-          context: ${{ env.IMAGE_NAME }}
+          context: .
           file: ./Dockerfile
           platforms: |
             linux/amd64
