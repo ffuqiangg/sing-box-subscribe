@@ -272,12 +272,12 @@
         "action": "hijack-dns"
       },
       {
-        "rule_set": "geosite-category-ads-all",
+        "rule_set": "adguard-dns-filter",
         "clash_mode": "rule",
         "action": "reject"
       },
       {
-        "rule_set": "geosite-category-ads-all",
+        "rule_set": "adguard-dns-filter",
         "clash_mode": "global",
         "outbound": "节点选择"
       },
