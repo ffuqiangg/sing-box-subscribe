@@ -336,7 +336,7 @@
         "tag": "adguard-dns-filter",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/ffuqiangg/sing-box-subscribe@main/adguard-dns-filter.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/ffuqiangg/sing-box-adsruleset@main/rule/adguard-dns-filter.srs",
         "download_detour": "direct"
       },
       {
