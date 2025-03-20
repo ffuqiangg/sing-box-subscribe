@@ -158,20 +158,6 @@
       ]
     },
     {
-      "tag":"Github",
-      "type":"selector",
-      "outbounds":[
-        "direct",
-        "节点选择",
-        "自动选择",
-        "日本节点",
-        "德国节点",
-        "美国节点",
-        "其它节点"
-      ],
-      "default": "节点选择"
-    },
-    {
       "tag":"Microsoft",
       "type":"selector",
       "outbounds":[
@@ -304,10 +290,6 @@
         "outbound": "Apple"
       },
       {
-        "rule_set": "geosite-github",
-        "outbound": "Github"
-      },
-      {
         "rule_set": "geosite-microsoft",
         "outbound": "Microsoft"
       },
@@ -378,17 +360,10 @@
         "download_detour": "direct"
       },
       {
-        "tag": "geosite-github",
+        "tag": "geosite-microsoft-cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-microsoft",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft@cn.srs",
         "download_detour": "direct"
       },
       {
