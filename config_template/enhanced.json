@@ -51,6 +51,10 @@
         "server": "local"
       },
       {
+        "rule_set": "geosite-geolocation-!cn",
+        "server": "fakeip"
+      },
+      {
         "type": "logical",
         "mode": "and",
         "rules": [
@@ -59,15 +63,11 @@
             "invert": true
           },
           {
-            "rule_set": "geosite-cn"
+            "rule_set": "geoip-cn"
           }
         ],
-        "server": "remote",
-        "client_subnet": "114.114.114.114/24"
-      },
-      {
-        "query_type": 64,
-        "server": "fakeip"
+        "client_subnet": "114.114.114.114/24",
+        "server": "remote"
       }
     ],
     "fakeip": {
@@ -76,7 +76,8 @@
     },
     "final": "remote",
     "strategy": "ipv4_only",
-    "disable_cache": false
+    "disable_cache": false,
+    "independent_cache": true
   },
   "experimental": {
     "clash_api": {
@@ -89,7 +90,7 @@
     },
   "cache_file": {
     "enabled": true,
-    "store_fakeip": false
+    "store_fakeip": true
     }
   },
   "inbounds": [
