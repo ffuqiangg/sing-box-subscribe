@@ -41,10 +41,17 @@
       {
         "domain_suffix": [
           "googleapis.cn",
-          "googleapis.com",
           "xn--ngstr-lra8j.com"
         ],
         "server": "remote"
+      },
+      {
+        "query_type": 64,
+        "rule_set": [
+          "geosite-cn",
+          "geosite-geolocation-!cn"
+        ],
+        "server": "fakeip"
       },
       {
         "rule_set": "geosite-cn",
@@ -52,7 +59,7 @@
       },
       {
         "rule_set": "geosite-geolocation-!cn",
-        "server": "fakeip"
+        "server": "remote"
       },
       {
         "type": "logical",
@@ -297,7 +304,6 @@
       {
         "domain_suffix": [
           "googleapis.cn",
-          "googleapis.com",
           "xn--ngstr-lra8j.com"
         ],
         "outbound": "节点选择"

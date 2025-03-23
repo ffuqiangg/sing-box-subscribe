@@ -37,7 +37,6 @@
       {
         "domain_suffix": [
           "googleapis.cn",
-          "googleapis.com",
           "xn--ngstr-lra8j.com"
         ],
         "server": "remote"
@@ -269,7 +268,6 @@
       {
         "domain_suffix": [
           "googleapis.cn",
-          "googleapis.com",
           "xn--ngstr-lra8j.com"
         ],
         "outbound": "节点选择"
