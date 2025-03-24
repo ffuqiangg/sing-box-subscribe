@@ -173,7 +173,7 @@
         "{all}"
       ],
       "filter":[
-        {"action":"include","keywords":"🇯🇵"}
+        {"action":"include","keywords":["JP"]}
       ],
       "url": "http://www.gstatic.com/generate_204",
       "interval": "10m",
@@ -186,7 +186,7 @@
         "{all}"
       ],
       "filter":[
-        {"action":"include","keywords":"🇩🇪"}
+        {"action":"include","keywords":["DE"]}
       ],
       "url": "http://www.gstatic.com/generate_204",
       "interval": "10m",
@@ -199,7 +199,7 @@
         "{all}"
       ],
       "filter":[
-        {"action":"include","keywords":"🇺🇸"}
+        {"action":"include","keywords":["US"]}
       ],
       "url": "http://www.gstatic.com/generate_204",
       "interval": "10m",
@@ -212,7 +212,7 @@
         "{all}"
       ],
       "filter":[
-        {"action":"exclude","keywords":["🇯🇵|🇩🇪|🇺🇸"]}
+        {"action":"exclude","keywords":["JP|DE|US"]}
       ],
       "url": "http://www.gstatic.com/generate_204",
       "interval": "10m",
