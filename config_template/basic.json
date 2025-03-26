@@ -17,7 +17,7 @@
         "tag": "local"
       },
 			{
-				"tag": "default-dns",
+				"tag": "detour-dns",
 				"address": "223.5.5.5",
 				"detour": "direct"
 			}
