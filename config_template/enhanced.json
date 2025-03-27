@@ -7,20 +7,14 @@
     "servers": [
       {
         "address": "https://dns.google/dns-query",
-        "address_resolver": "detour-dns",
+        "address_resolver": "local",
         "tag": "remote"
       },
       {
         "address": "https://223.5.5.5/dns-query",
-        "address_resolver": "detour-dns",
         "detour": "direct",
         "tag": "local"
-      },
-			{
-				"tag": "detour-dns",
-				"address": "223.5.5.5",
-				"detour": "direct"
-			}
+      }
     ],
     "rules": [
       {
@@ -34,11 +28,6 @@
       {
         "clash_mode": "direct",
         "server": "local"
-      },
-      {
-        "rule_set": "adguard-dns-filter",
-        "clash_mode": "rule",
-        "action": "reject"
       },
       {
         "domain_suffix": [
@@ -68,9 +57,7 @@
     ],
     "final": "remote",
     "strategy": "ipv4_only",
-    "disable_cache": false,
-		"disable_expire": false,
-    "independent_cache": false
+    "disable_cache": false
   },
   "experimental": {
     "clash_api": {
@@ -163,32 +150,6 @@
       ]
     },
     {
-      "tag":"Apple",
-      "type":"selector",
-      "outbounds":[
-        "direct",
-        "节点选择",
-        "自动选择",
-        "日本节点",
-        "德国节点",
-        "美国节点",
-        "其它节点"
-      ]
-    },
-    {
-      "tag":"Microsoft",
-      "type":"selector",
-      "outbounds":[
-        "direct",
-        "节点选择",
-        "自动选择",
-        "日本节点",
-        "德国节点",
-        "美国节点",
-        "其它节点"
-      ]
-    },
-    {
       "tag":"日本节点",
       "type":"urltest",
       "outbounds":[
@@ -266,16 +227,6 @@
         "action": "hijack-dns"
       },
       {
-        "rule_set": "adguard-dns-filter",
-        "clash_mode": "rule",
-        "action": "reject"
-      },
-      {
-        "rule_set": "adguard-dns-filter",
-        "clash_mode": "global",
-        "outbound": "节点选择"
-      },
-      {
         "clash_mode": "direct",
         "outbound": "direct"
       },
@@ -303,19 +254,7 @@
         "outbound": "Telegram"
       },
       {
-        "rule_set": ["geoip-apple", "geosite-apple-cn"],
-        "outbound": "Apple"
-      },
-      {
-        "rule_set": "geosite-microsoft-cn",
-        "outbound": "Microsoft"
-      },
-      {
-        "rule_set": "geosite-geolocation-!cn",
-        "outbound": "节点选择"
-      },
-      {
-        "rule_set": ["geoip-cn", "geosite-cn"],
+        "rule_set": ["geoip-cn", "geosite-cn", "geosite-apple-cn", "geosite-microsoft-cn"],
         "outbound": "direct"
       }
     ],
@@ -342,13 +281,6 @@
         "download_detour": "direct"
       },
       {
-        "tag": "adguard-dns-filter",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/ffuqiangg/sing-box-adsruleset@main/rule/adguard-dns-filter.srs",
-        "download_detour": "direct"
-      },
-      {
         "tag": "geoip-telegram",
         "type": "remote",
         "format": "binary",
@@ -360,13 +292,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geoip-apple",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geoip/apple.srs",
         "download_detour": "direct"
       },
       {

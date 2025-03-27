@@ -7,20 +7,14 @@
     "servers": [
       {
         "address": "https://dns.google/dns-query",
-        "address_resolver": "detour-dns",
+        "address_resolver": "local",
         "tag": "remote"
       },
       {
         "address": "https://223.5.5.5/dns-query",
-        "address_resolver": "detour-dns",
         "detour": "direct",
         "tag": "local"
-      },
-			{
-				"tag": "detour-dns",
-				"address": "223.5.5.5",
-				"detour": "direct"
-			}
+      }
     ],
     "rules": [
       {
@@ -36,22 +30,13 @@
         "server": "local"
       },
       {
-        "domain_suffix": [
-          "googleapis.cn",
-          "xn--ngstr-lra8j.com"
-        ],
-        "server": "remote"
-      },
-      {
         "rule_set": "geosite-cn",
         "server": "local"
       }
     ],
     "final": "remote",
     "strategy": "ipv4_only",
-    "disable_cache": false,
-		"disable_expire": false,
-    "independent_cache": false
+    "disable_cache": false
   },
   "experimental": {
     "clash_api": {
@@ -151,13 +136,6 @@
       {
         "ip_is_private": true,
         "outbound": "direct"
-      },
-      {
-        "domain_suffix": [
-          "googleapis.cn",
-          "xn--ngstr-lra8j.com"
-        ],
-        "outbound": "节点选择"
       },
       {
         "rule_set": ["geoip-cn", "geosite-cn"],
