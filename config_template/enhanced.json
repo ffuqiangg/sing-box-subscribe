@@ -227,6 +227,16 @@
         "action": "hijack-dns"
       },
       {
+        "rule_set": "adguard-dns-filter",
+        "clash_mode": "rule",
+        "action": "reject"
+      },
+      {
+        "rule_set": "adguard-dns-filter",
+        "clash_mode": "global",
+        "outbound": "节点选择"
+      },
+      {
         "clash_mode": "direct",
         "outbound": "direct"
       },
@@ -259,6 +269,13 @@
       }
     ],
     "rule_set": [
+      {
+        "tag": "adguard-dns-filter",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/ffuqiangg/sing-box-adsruleset@main/rule/adguard-dns-filter.srs",
+        "download_detour": "direct"
+      },
       {
         "tag": "geosite-youtube",
         "type": "remote",
