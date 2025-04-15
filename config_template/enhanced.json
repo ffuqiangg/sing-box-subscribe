@@ -7,11 +7,14 @@
     "servers": [
       {
         "address": "https://dns.google/dns-query",
+        "strategy": "ipv4_only",
         "address_resolver": "local",
+        "address_strategy": "ipv4_only",
         "tag": "remote"
       },
       {
-        "address": "https://223.5.5.5/dns-query",
+        "address": "h3://dns.alidns.com/dns-query",
+        "strategy": "ipv4_only",
         "detour": "direct",
         "tag": "local"
       }
@@ -30,22 +33,23 @@
         "server": "local"
       },
       {
-        "domain_suffix": [
-          "googleapis.cn",
-          "xn--ngstr-lra8j.com"
-        ],
-        "server": "remote"
-      },
-      {
         "rule_set": "geosite-cn",
         "server": "local"
+      },
+      {
+        "rule_set": "adguard-dns-filter",
+        "action": "reject"
+      },
+      {
+        "rule_set": "geosite-noncn",
+        "server": "remote"
       },
       {
         "type": "logical",
         "mode": "and",
         "rules": [
           {
-            "rule_set": "geosite-geolocation-!cn",
+            "rule_set": "geosite-noncn",
             "invert": true
           },
           {
@@ -55,9 +59,10 @@
         "server": "local"
       }
     ],
-    "final": "remote",
-    "strategy": "ipv4_only",
-    "disable_cache": false
+    "disable_cache": false,
+    "disable_expire": false,
+    "independent_cache": false,
+    "final": "remote"
   },
   "experimental": {
     "clash_api": {
@@ -249,13 +254,6 @@
         "outbound": "direct"
       },
       {
-        "domain_suffix": [
-          "googleapis.cn",
-          "xn--ngstr-lra8j.com"
-        ],
-        "outbound": "节点选择"
-      },
-      {
         "rule_set": ["geosite-youtube", "geoip-google", "geosite-google"],
         "outbound": "Google"
       },
@@ -326,7 +324,7 @@
         "download_detour": "direct"
       },
       {
-        "tag": "geosite-geolocation-!cn",
+        "tag": "geosite-noncn",
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
