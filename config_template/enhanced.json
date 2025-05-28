@@ -6,43 +6,39 @@
   "dns": {
     "servers": [
       {
-        "address": "https://dns.google/dns-query",
-        "strategy": "ipv4_only",
-        "address_resolver": "local",
-        "address_strategy": "ipv4_only",
-        "tag": "remote"
+        "address": "https://dns.cloudflare.com/dns-query",
+        "address_resolver": "china-dns",
+        "tag": "main-dns"
       },
       {
         "address": "h3://dns.alidns.com/dns-query",
-        "strategy": "ipv4_only",
         "detour": "direct",
-        "tag": "local"
+        "tag": "china-dns"
       }
     ],
     "rules": [
       {
         "outbound": "any",
-        "server": "local"
+        "server": "china-dns"
       },
       {
         "clash_mode": "global",
-        "server": "remote"
+        "server": "main-dns"
       },
       {
         "clash_mode": "direct",
-        "server": "local"
+        "server": "china-dns"
       },
       {
         "rule_set": "geosite-cn",
-        "server": "local"
+        "server": "china-dns"
       },
       {
-        "rule_set": "adguard-dns-filter",
-        "action": "reject"
-      },
-      {
-        "rule_set": "geosite-noncn",
-        "server": "remote"
+        "domain_suffix": [
+          "services.googleapis.cn",
+          "xn--ngstr-lra8j.com"
+        ],
+        "server": "main-dns"
       },
       {
         "type": "logical",
@@ -56,12 +52,12 @@
             "rule_set": "geoip-cn"
           }
         ],
-        "server": "local"
+        "server": "china-dns"
       }
     ],
     "disable_cache": false,
     "disable_expire": false,
-    "independent_cache": false,
+    "strategy": "ipv4_only",
     "final": "remote"
   },
   "experimental": {
@@ -74,8 +70,7 @@
       "default_mode": "rule"
     },
   "cache_file": {
-    "enabled": true,
-    "store_fakeip": true
+    "enabled": true
     }
   },
   "inbounds": [
@@ -232,16 +227,6 @@
         "action": "hijack-dns"
       },
       {
-        "rule_set": "adguard-dns-filter",
-        "clash_mode": "rule",
-        "action": "reject"
-      },
-      {
-        "rule_set": "adguard-dns-filter",
-        "clash_mode": "global",
-        "outbound": "节点选择"
-      },
-      {
         "clash_mode": "direct",
         "outbound": "direct"
       },
@@ -250,11 +235,22 @@
         "outbound": "节点选择"
       },
       {
+        "domain_suffix": [
+          "services.googleapis.cn",
+          "xn--ngstr-lra8j.com"
+        ],
+        "outbound": "节点选择"
+      },
+      {
+        "rule_set": "adguard-dns-filter",
+        "action": "reject"
+      },
+      {
         "ip_is_private": true,
         "outbound": "direct"
       },
       {
-        "rule_set": ["geosite-youtube", "geoip-google", "geosite-google"],
+        "rule_set": ["geoip-google", "geosite-google"],
         "outbound": "Google"
       },
       {
@@ -272,13 +268,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/ffuqiangg/sing-box-adsruleset@main/rule/adguard-dns-filter.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-youtube",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs",
         "download_detour": "direct"
       },
       {

@@ -6,41 +6,38 @@
   "dns": {
     "servers": [
       {
-        "address": "https://dns.google/dns-query",
-        "strategy": "ipv4_only",
-        "address_resolver": "local",
-        "address_strategy": "ipv4_only",
-        "tag": "remote"
+        "address": "https://dns.cloudflare.com/dns-query",
+        "address_resolver": "china-dns",
+        "tag": "main-dns"
       },
       {
         "address": "h3://223.5.5.5/dns-query",
-        "strategy": "ipv4_only",
         "detour": "direct",
-        "tag": "local"
+        "tag": "china-dns"
       }
     ],
     "rules": [
       {
         "outbound": "any",
-        "server": "local"
+        "server": "china-dns"
       },
       {
         "clash_mode": "global",
-        "server": "remote"
+        "server": "main-dns"
       },
       {
         "clash_mode": "direct",
-        "server": "local"
+        "server": "china-dns"
       },
       {
         "rule_set": "geosite-cn",
-        "server": "local"
+        "server": "china-dns"
       }
     ],
     "disable_cache": false,
     "disable_expire": false,
-    "independent_cache": false,
-    "final": "remote"
+    "strategy": "ipv4_only",
+    "final": "main-dns"
   },
   "experimental": {
     "clash_api": {
@@ -52,8 +49,7 @@
       "default_mode": "rule"
     },
   "cache_file": {
-    "enabled": true,
-    "store_fakeip": false
+    "enabled": true
     }
   },
   "inbounds": [
@@ -98,7 +94,7 @@
         "{all}"
       ],
       "filter":[
-        {"action":"exclude","keywords":["网站|地址|剩余|过期|时间|有效|套餐|官网"]}
+        {"action":"exclude","keywords":["网站|地址|剩余|过期|时间|有效|套餐|官网|群组"]}
       ],
       "url": "http://www.apple.com/library/test/success.html",
       "interval": "10m",
