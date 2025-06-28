@@ -30,10 +30,6 @@
         "server": "china-dns"
       },
       {
-        "rule_set": "adguard-dns-filter",
-        "action": "reject"
-      },
-      {
         "rule_set": "geosite-cn",
         "server": "china-dns"
       },
@@ -49,8 +45,7 @@
             "rule_set": "geoip-cn"
           }
         ],
-        "client_subnet": "114.114.114.114/24",
-        "server": "mian-dns"
+        "server": "china-dns"
       }
     ],
     "disable_cache": false,
